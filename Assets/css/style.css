@@ -242,18 +242,24 @@ header{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    position: relative;
 }
 
 .icon{
     width: 21px;
-    height: 29px;
+    height: 28px;
     background-color: #e4e4e4;
+    position: relative;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .profile_img img{
     width: 30px;
-    position: relative;
-    bottom: 45px;
-    right: 5px;
+    height: 32px;
 }
 
 .nav_login aside #link_login{
@@ -786,7 +792,7 @@ main.greatFontSize{
     border-radius: 4px;
     width: 50%;
     margin: 10px auto 20px;
-    padding-bottom: 3px;
+    padding-bottom: 1px;
     cursor: pointer;
     transition: all .3s ease-in-out;
 }

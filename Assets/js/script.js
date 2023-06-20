@@ -1786,8 +1786,6 @@ const judas1_naa = [
     'a este que é o único Deus, nosso Salvador, mediante Jesus Cristo, Senhor nosso, sejam a glória, a majestade, o poder e a autoridade, antes de todas as eras, agora, e por toda a eternidade. Amém!'
 ]
 
-console.log(colossenses3_naa.length)
-
 const main = document.querySelector('main')
 const p = document.querySelector('p')
 
