@@ -1,0 +1,88 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 10px;
+}
+
+label{
+    color: gold;
+}
+
+.data{
+    all: unset;
+    border-bottom: 1px solid gold;
+    caret-color: gold;
+    padding: 2px;
+}
+
+
+
+[type = 'submit']{
+    background-color: rgb(184, 147, 55);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-left: 70%;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .8px;
+    cursor: pointer;
+    transition: opacity .3s ease-out;
+}
+[type = 'submit']:hover{
+    opacity: .8;
+}
+
+.back{
+    background-color: transparent;
+    border: none;
+    color: aqua;
+    margin: 3rem auto;
+    transition: text-shadow .3s ease-in-out;
+    letter-spacing: .6px;
+    font-size: 1.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.back:hover{
+    text-shadow: 0 0 5px gold;
+}
+
+.back::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: aqua;
+
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s ease-out;
+
+}
+
+.back:focus::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+@media screen and (max-width: 420px) {
+    [type = 'submit']{
+        padding: 10px 0;
+        width: 30%;
+        font-size: 9.5pt;
+        letter-spacing: .3px;
+    }
+}

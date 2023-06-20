@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../img/book-bible-solid.svg">
+    <link rel="stylesheet" href="../css/reset_css.css">
+    <style>
+        header{
+            padding: 200px 15px;
+            background-image: url(../img/maosBiblia.jpg);
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: space-between;
+            column-gap: 1rem;
+            position: relative;
+        }
+
+        header .btn_nav {
+            all: unset;
+            position: fixed;
+            top: 1.3rem;
+            transition: all .5s ease-in-out;
+        }
+        header .btn_nav:nth-child(3){
+            right: 1rem;
+        }
+        header i {
+            color: #e4e4e4;
+            transition: opacity .5s ease-in-out;
+            top: 1.3rem;
+        }
+
+        header .btn_nav::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            background-color: #e3d167;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform .1s ease-out;
+        }
+
+        header .btn_nav:focus::after{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        header i:nth-child(3){
+            right: 1rem;
+        }
+
+        header i:hover{
+            opacity: .7;
+            cursor: pointer;
+        }
+
+        header h1{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: auto;
+            text-shadow: 0 0 2px grey;
+            filter: drop-shadow(0 0 2px grey);
+        }
+
+        #popup_logout{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .7);
+            transition: opacity 500ms;
+            display: flex;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        #popup_logout.open{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup{
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #656565;
+            border-radius: 5px;
+            width: 35%;
+            position: relative;
+            align-self: center;
+            transition: all 5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup h3{
+            margin-top: .7rem;
+            color: #e4e4e4;
+            font-size: medium;
+            font-weight: 500;
+            letter-spacing: .5px;
+        }
+
+        .popup .close{
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            top: 0;
+            right: 15px;
+            transition: all 200ms;
+            font-size: 20pt;
+            font-weight: bold;
+            color: #e4e4e4;
+            transition: .3s ease-out;
+            cursor: pointer;
+        }
+
+        .popup .close:hover{
+            color: #d80645;
+        }
+
+        .popup .buttons{
+            align-self: flex-end;
+            max-height: 30%;
+            margin-top: 1rem;
+            overflow: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .popup .buttons.hidden{
+            display: none;
+        }
+
+
+        .popup .btn_popup{
+            all: unset;
+            color: gold;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: all .3s ease-out;
+        }
+
+        .popup .btn_popup:hover{
+            text-shadow: 0 0 10px #ece2a5;
+            opacity: .8;
+        }
+
+        #btn_ok_deslog{
+            background-color: blue;
+            margin-top: 10px;
+            color: #e4e4e4;
+            padding: 5px 15px;
+            padding: .7rem 1.8rem;
+            border: none;
+            border-radius: 2px;
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            cursor: pointer;
+            display: none;
+            align-self: flex-end;
+            transition: opacity .3s ease-out;
+        }
+
+        #btn_ok_deslog:hover{
+            opacity: .8;
+        }
+
+        #btn_ok_deslog.show{
+            display: block;
+        }
+
+        #popup_saveArea{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .7);
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .5s ease-out;
+        }
+
+        #popup_saveArea.show{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popupSave{
+            width: 30%;
+            background-color: #656565; 
+            border-radius: 4px;           
+            align-self: center;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 0 .7rem;
+            gap: 2rem;
+        }
+
+        .popupSave h3{
+            font-size: medium;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .popupSave .btn_ok{
+            background-color: blue;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            padding: .5rem 1.8rem;
+            color: #e4e4e4;
+            font-weight: 500;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            align-self: flex-end;
+            cursor: pointer;
+            transition: opacity .3s ease-out;
+        }
+
+        .popupSave .btn_ok:hover{
+            opacity: .8;
+        }
+
+
+        main{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+        }
+        form{
+            background-color: #e4e4e4;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 10px;
+            cursor: text;
+        }
+        section{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+
+        section label{
+            cursor: text;
+            width: 20%;
+        }
+
+        section input{
+            all: unset;
+            width: 80%;
+            text-align: end;
+        }
+        hr{
+            width: 100%;
+            margin: auto;
+        }
+        .btn_save{
+            width: 90%;
+            margin: auto;
+            background-color: gold;
+            border: none;
+            border-radius: 2px;
+            padding: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+            cursor: pointer;
+            transition: opacity .3s ease-in-out;
+        }
+
+        .btn_save:hover{
+            opacity: .8;
+        }
+
+        @media screen and (max-width: 840px) {
+            header{
+                padding: 120px 15px;
+            }
+
+            .popup{
+                width: 70%;
+            }
+            .popup h3, .popup .btn_popup{
+                font-size: medium;
+            }
+
+            .popupSave{
+                width: 50%;
+            }
+
+            .popupSave h3{
+                font-size: medium;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            header{
+                padding: 80px 15px;
+            }
+
+            #btn_ok_deslog{
+                padding: .5rem 1rem;
+            }
+
+            .popup h3, .popup .btn_popup{
+                font-size: small;
+            }
+
+            .popupSave{
+                width: 65%;
+                gap: 1.5rem;
+            }
+
+            .popupSave h3{
+                font-size: small;
+                font-weight: 500;
+                margin-top: 1.4rem;
+            }
+
+            .popupSave .btn_ok{
+                padding: .5rem 1.2rem;
+            }
+        }
+        
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <button onclick="back()" class="btn_nav">
+            <i class="fa-solid fa-arrow-left-long" title="Voltar"></i>
+        </button>
+        <h1>titulo</h1>
+        <button class="btn_nav">
+            <i class="fa-solid fa-arrow-right-from-bracket" title="Deslogar" id="i_deslog"></i>
+        </button>
+
+        <div id="popup_logout">
+            <div class="popup">
+                <button class="close" onclick="fechar()">&times;</button>
+                <h3 id="h3_popupLogout">Deseja deslogar?</h3>
+                <section class="buttons">
+                    <button class="btn_popup" id="cancelar" onclick="fechar()">Cancelar</button>
+                    <button class="btn_popup" id="confirmDeslog" onclick="deslogar()">Logout</button>
+                </section>
+                <button id="btn_ok_deslog" onclick="ok_deslog()">Ok</button>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <form action="">
+            <section>
+                <label for="username">Nome</label>
+                <input type="text" name="user" id="username">
+            </section>
+            <hr>
+            <section>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" autocomplete="off">                
+            </section>
+        </form>
+        <button class="btn_save" onclick="save()">Salvar</button>
+        
+        <div id="popup_saveArea">
+            <div class="popupSave">
+                <h3 id="popup_saveMessage"></h3>
+                <button class="btn_ok" onclick="ok_save()">Ok</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const h1 = document.querySelector('h1');
+        h1.innerText = localStorage.nome;
+
+        const username = document.querySelector('#username');
+        username.value = localStorage.getItem('nome');
+    
+        const email = document.getElementById('email');
+        email.value = localStorage.getItem('email');
+
+        const back = () =>{
+            setTimeout(() =>{
+                location.href = '../../index.html';
+            }, 350);
+            event.target.style = 'text-shadow: 0 0 3px gold;';
+        }
+
+        const popup_saveArea = document.getElementById('popup_saveArea');
+        const h3_popup_saveMessage = document.querySelector('#popup_saveMessage');
+        
+        const save = () =>{
+            popup_saveArea.classList.add('show');
+            if(username.value.length == 0 || email.value.length == 0){
+                h3_popup_saveMessage.textContent = 'Campo vazio não é aceito';
+                username.value = localStorage.nome;
+                email.value = localStorage.email;
+            } else if(localStorage.email !== email.value || localStorage.nome !== username.value && username.value.length > 0 && email.value.length > 0){
+                localStorage.email = email.value.trim();
+                localStorage.nome = username.value.trim();
+                h1.innerText = username.value;
+                h3_popup_saveMessage.textContent = 'Salvo!';
+            } else {
+                h3_popup_saveMessage.textContent = 'Nenhuma alteração feita';
+            }
+        }
+
+        function ok_save(){
+            popup_saveArea.classList.remove('show');
+        }
+
+        const i_deslog = document.getElementById('i_deslog');
+        const popup_logout = document.getElementById('popup_logout');
+        const cancelar = document.getElementById('cancelar');
+
+        i_deslog.addEventListener('click', (e)=>{
+            popup_logout.classList.add('open');
+            e.target.style = 'text-shadow: 0 0 3px gold;';
+        })
+
+        const close = document.querySelector('.close');
+        const h3_popupLogout = document.querySelector('#h3_popupLogout');
+        const buttons = document.querySelector('.buttons')
+        const btn_ok_deslog = document.getElementById('btn_ok_deslog');
+
+        const deslogar = () =>{
+            close.style.display = 'none';
+            buttons.classList.add('hidden');
+            h3_popupLogout.innerText = 'Deslogado';
+            btn_ok_deslog.classList.add('show');
+        }
+
+        function fechar(){
+            popup_logout.classList.remove('open');
+            i_deslog.style = 'text-shadow: none;';
+        }
+
+        function ok_deslog(){
+            location.assign('../../index.html');
+            localStorage.removeItem('email');
+            localStorage.removeItem('nome');
+        }
+
+        document.addEventListener('click', (e)=>{
+            if(h3_popupLogout.innerText != 'Deslogado'){
+                if(e.target === popup_logout){
+                    fechar();
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

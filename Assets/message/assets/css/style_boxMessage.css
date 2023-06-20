@@ -1,0 +1,27 @@
+header{
+    background-color: #21212a;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: .5rem;
+}
+
+a{
+    position: relative;
+    top: 2px;
+}
+
+a i{
+    color: aliceblue;
+    font-size: 1.5rem;
+    transition: opacity .4s ease-in-out;
+}
+
+a i:hover{
+    opacity: .7;
+}
+
+main{
+    padding: 30px 20px;
+}

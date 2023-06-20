@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../img/book-bible-solid.svg">
+    <link rel="stylesheet" href="../../css/reset_css.css">
+    <link rel="stylesheet" href="../telas_cadastro/assets/style_cad.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <form action="confirm_cadastro_email.html" method="get">
+            <label for="email">E-mail</label>
+            <input id="end_email" class="data" type="email" name="email" autocomplete="off" required>
+            <br>
+            <label for="password">Senha</label>
+            <input class="data" type="password" name="" required>
+            <input type="submit" value="Próxima" onclick="next()">
+        </form>
+        
+        <button class="back" onclick="back()">Voltar</button>
+       
+    </div>
+
+    <script src="assets/script_cad.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/book-bible-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/reset_css.css">
+    <link rel="stylesheet" href="assets/css/style_loginPage.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <main class="container">
+        <div class="img">
+            <i class="fa-solid fa-book-bible"></i>
+        </div>
+
+        <section class="btns">            
+            <button id="btnGoogle" class="btn" onclick="openCadGoogle()">
+                <i class="fa-brands fa-google"></i>
+                <span>Fazer login com o Google</span>
+            </button>
+
+            <div class="menu_email">
+                <section class="header">
+                    <div class="icon">
+                        <i class="fa-solid fa-book-bible"></i>
+                    </div>
+                    <h3>Escolha uma conta:</h3>
+                </section>
+                <main>
+                    <button>
+                        <a href="#0" class="link_email">
+                            <span>E</span>
+                            exemplo@email.com
+                        </a>
+                    </button>
+                    <button>
+                        <a href="telas_cadastro/cadastro_email.html" class="link_email">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Adicionar outra conta
+                        </a>
+                    </button>
+                </main>
+                <input type="button" value="Voltar" onclick="openCadGoogle()">
+            </div>
+
+
+            <button class="btn" onclick="cadForFacebook()">
+                <i class="fa-brands fa-square-facebook"></i>
+                <span>Fazer login com o Facebook</span>
+            </button>
+
+            <button class="btn" onclick="cadForEmail()">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Fazer login com o e-mail</span>
+            </button>
+
+        </section>
+    </main>
+    
+    <footer>
+        <button class="home" onclick="back()">Home</button>
+    </footer>
+
+    <script src="assets/js/script_loginPage.js"></script>
+</body>
+</html>

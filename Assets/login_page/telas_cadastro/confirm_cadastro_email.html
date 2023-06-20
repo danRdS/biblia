@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../img/book-bible-solid.svg">
+    <link rel="stylesheet" href="../../css/reset_css.css">
+    <title>Document</title>
+    <style>
+        .container_username{
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            padding: 2px;
+            gap: 5px;
+        }
+        label{
+            color: gold;
+        }
+        form input{
+            all: unset;
+            border-bottom: 1px solid gold;
+            caret-color: gold;
+            padding: 4px;
+        }
+        .container_username .btn_confirm{
+            background-color: gold;
+            border: none;
+            border-radius: 2px;
+            padding: 8px;
+            letter-spacing: .3px;
+            text-transform: uppercase;
+            font-family: 500;
+            width: 30%;
+            align-self: flex-end;
+            cursor: pointer;
+            transition: opacity .3s ease-in-out;    
+        }
+
+        #popup_area{
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: opacity 500ms;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        #popup_area.open{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup{
+            background-color: #646464;
+            padding: 2.5rem 1rem 1rem;
+            width: 30%;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            transition: all 1s ease-in-out;
+        }
+
+        .popup h3{
+            margin-top: -10px;
+            font-size: larger;
+            font-weight: 500;
+            letter-spacing: .5px;
+            align-self: flex-start;
+        }
+
+        .popup .btn_ok{
+            background-color: blue;
+            color: #e4e4e4;
+            border: none;
+            outline: none;
+            border-radius: 3px;
+            padding: .7rem 2.2rem;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            align-self: flex-end;
+            cursor: pointer;
+            transition: opacity .3s ease-out;
+        }
+
+        .popup .btn_ok:hover{
+            opacity: .8;
+        }
+
+        .container_username .btn_confirm:hover{
+            opacity: .6;
+        }
+        .field_actions{
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .field_actions button{
+            all: unset;
+            color: aqua;
+            position: relative;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+        }
+
+        .field_actions button:hover{
+            text-shadow: 0 0 5px gold;
+        }
+
+        button::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            border-radius: 2px;
+            background-color: aqua;
+
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform .3s ease-out;
+        }
+
+        button:focus::after{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        @media screen and (max-width: 840px) {
+            .popup{
+                width: 45%;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            .container_username .btn_confirm{
+                font-size: 12px;
+                padding: 10px;
+                width: 40%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .popup{
+                width: 65%;
+                padding: 2rem 1rem .8rem;
+
+            }
+
+            .popup h3, .popup .btn_ok{
+                font-size: medium;
+            }
+
+            .popup .btn_ok{
+                font-size: small;
+                padding: .4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container_username">
+        <form action="">
+            <label for="user">Nome de usuário:</label>
+            <input type="text" name="user" id="username">
+        </form>
+
+        <button class="btn_confirm" onclick="confirm()">Confirmar</button>
+        
+        <section id="popup_area">
+            <div class="popup">
+                <h3 id="popupMessage"></h3>
+                <button class="btn_ok" onclick="ok()">Ok</button>
+            </div>
+        </section>
+    </div>
+
+    <section class="field_actions">
+        <button onclick="back()">Voltar</button>
+        <button onclick="home()">Home</button>
+    </section>
+
+    <script>
+
+        const username = document.getElementById('username');
+        let nome = localStorage.getItem('nome');
+
+        const popup_area = document.getElementById('popup_area');
+        const popupMessage = document.getElementById('popupMessage');
+        
+       
+        function confirm(){
+            let nome = username.value.trim();
+            popup_area.classList.add('open');
+            if(nome.length>0){
+                localStorage.nome = nome;
+                popupMessage.innerText = 'Confirmado';
+                popupMessage.style.fontSize = 'medium';
+            } else {
+                popupMessage.innerText = 'Digite um nome de usuário!';
+                popupMessage.style.fontSize = '10pt';
+            }
+
+        }
+
+        const ok = ()=>{
+            popupMessage.innerText == 'Confirmado' ? location.href = '../../../index.html' : popup_area.classList.remove('open');
+        }
+
+        const home = () =>{
+            setTimeout(() => {
+                location.href = '../../../index.html';
+                localStorage.removeItem('email');
+                localStorage.removeItem('nome');
+            }, 700);
+        }
+
+        const back = ()=>{
+            setTimeout(() => {
+                if(localStorage.fb){
+                    location.assign('../telas_cadastro/facebook/cadastro_facebook.html');
+                    localStorage.removeItem('fb');
+                } else {
+                    location.assign('../telas_cadastro/cadastro_email.html');
+                }
+                localStorage.removeItem('email');
+                localStorage.removeItem('nome');
+            }, 700);
+        }
+
+    </script>
+</body>
+</html>

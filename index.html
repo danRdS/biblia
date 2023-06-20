@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="topo">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Assets/img/book-bible-solid.svg">
+    <link rel="stylesheet" href="Assets/css/reset_css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <title>Bíblia</title>
+</head>
+<body>
+    <header>
+        <nav class="menu_bar">
+            <button class="hamburguer">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div id="menu_container">
+                <main id="main_container">
+                    <div class="field_login">
+                        <nav class="nav_login">
+                            <aside>
+                                <section class="profile_img">
+                                    <div class="icon">
+                                        <img src="Assets/img/book-bible-solid.svg" alt="ícone da bíbila" title="Bíblia">
+                                    </div>
+                                </section>
+                                
+                                <a href="Assets/login_page/loginPage.html" id="link_login" title="Login">
+                                    <h3 id="h3_nameuser"></h3>
+                                    <span id="span_email"></span>
+                                </a>
+                            </aside>
+                            <a class="link_message" href="Assets/message/boxMessage.html">
+                                <i class="fa-solid fa-envelope" title="Mensagens"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <nav class="menu_lateral">
+                        <ul>
+                            <li class="option_menu_lateral">
+                                <h4>Siga-nos</h4>
+                            </li>
+                            <li class="option_menu_lateral">
+                                <a href="https://www.instagram.com/daniel_ribeiro_da_silva/" class="link_menu_lateral" target="_blank" title="instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>instagram</span>
+                                </a>
+                            </li>
+                            <li class="option_menu_lateral">
+                                <a href="https://github.com/danRdS" class="link_menu_lateral" target="_blank" title="github">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>github</span>
+                                </a>
+                            </li>
+                            <li class="option_menu_lateral">
+                                <a href="https://www.youtube.com/@danielribeirodasilva9443/featured" class="link_menu_lateral" target="_blank" title="youtube">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    <span>youtube</span>
+                                </a>
+                            </li>
+                            <li class="option_menu_lateral">
+                                <a href="https://twitter.com/Daniel79023629" class="link_menu_lateral" target="_blank" title="twitter">
+                                    <i class="fa-brands fa-twitter"></i>
+                                    <span>twitter</span>
+                                </a>
+                            </li>
+                            <li class="option_menu_lateral" id="link_logout">
+                                <a href="#0" class="link_menu_lateral" title="Deslogar" onclick="logout()">
+                                    <i class="fa-solid fa-arrow-right-from-bracket" onclick="logout()" title="Deslogar"></i>
+                                    <span>Deslogar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </main>
+
+                <div id="popup_areaLogoutMenu">
+                    <div class="popup_logoutMenu">
+                        <main>
+                            <h3 id="popupMesssageLogout">Deseja deslogar?</h3>
+                            <div class="buttonsOnOff">
+                                <button class="btn_logout" onclick="cancelar()">Cancelar</button>
+                                <button class="btn_logout" onclick="confirmaLogout()">Ok</button>
+                            </div>
+                            <button class="confirm_logout" id="btn_yes" onclick="yes()">OK</button>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <section class="escolha">
+                <div class="campo_livros">
+                    <button id="btn_escolha_livro" class="book" onclick="showBooks()">Rute</button>
+                    <button id="btn_escolha_cap" class="book" onclick="caps()">1</button>
+                    <button id="btn_escolha_versao" class="book" onclick="mostrarVersao()">ACF</button>
+                </div>
+
+                <div class="btn_books">
+                    <h3>Livro:</h3>
+                    <nav class="nav_btn_books">
+                        <button id="0" class="book" onclick="showBooks(), abrirLivro(id)"><p>Rt</p> Rute</button>
+                        <button id="1" class="book" onclick="showBooks(), abrirLivro(id)"><p>Jl</p> Joel</button>
+                        <button id="2" class="book" onclick="showBooks(), abrirLivro(id)"><p>Am</p> Amós</button>
+                        <button id="3" class="book" onclick="showBooks(), abrirLivro(id)"><p>Ob</p> Obadias</button>
+                        <button id="4" class="book" onclick="showBooks(), abrirLivro(id)"><p class="nt">Cl</p> Colossenses</button>
+                        <button id="5" class="book" onclick="showBooks(), abrirLivro(id)"><p class="nt">Fm</p> Filemom</button>
+                        <button id="6" class="book" onclick="showBooks(), abrirLivro(id)"><p class="nt">Hb</p> Hebreus</button>
+                        <button id="7" class="book" onclick="showBooks(), abrirLivro(id)"><p class="nt">Jd</p> Judas</button>
+                    </nav>
+                </div>
+
+                <div class="btn_versions">
+                    <h3>Versões</h3>
+                    <nav class="nav_btn_versions">
+                        <button id="0" class="name_version" onclick="escolherVersao(id)"><span>Almeida Corrigida e Fiel</span>ACF</button>
+                        <button id="1" class="name_version" onclick="escolherVersao(id)"><span>Nova Almeida Atualizada (2017)</span>NAA</button>
+                    </nav>
+                </div>
+            </section>
+
+            <button class="dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <nav class="menuDots">
+                    <a id="configLeitura" href="#popupAreaConfig" class="linkDots">Configurar Leitura</a>
+                    <a id="configBkgColor" href="#popupBkgColor" class="linkDots">Cor de fundo</a>
+                </nav>                
+            </button>
+
+            <div id="popupAreaConfig" class="popupAreaConfig">
+                    <main class="containerPopup">
+                        <h3 class="h3popup">Configurar Leitura</h3>
+                        <div class="fieldRange">
+                            <input type="range" name="range" id="rangeFontSize" value="18" min="10" max="100">
+                            <span id="spanRange">18</span>
+                        </div>
+                        <section class="buttonsConfirmChangesConfig">
+                            <button class="btnConfirmThema" id="cancelTheme">Cancelar</button>
+                            <button class="btnConfirmThema" id="confirmTheme">Salvar</button>
+                        </section>
+                    </main>
+            </div>
+            <div id="popupBkgColor" class="popupBkgColor">
+                    <main class="containerPopup">
+                        <h3 class="h3popup">Modo Claro</h3>
+                        <div class="fieldRange">
+                            <label class="switch">
+                                <input type="checkbox" id="input">
+                                <span class="slider"></span>
+                            </label>                            
+                        </div>
+                        <section class="buttonsConfirmChangesConfig">
+                            <button class="btnConfirmThema" onclick="dontSaveTheme()">Cancelar</button>
+                            <button class="btnConfirmThema" onclick="saveTheme()">Salvar</button>
+                        </section>
+                    </main>
+            </div>
+            
+        </nav>
+    </header>
+    <main id="main_p">
+        <div class="capitulos">
+
+        </div>
+        <div id="content"></div>
+
+        <button id="toTop" onclick="topFuntion()">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+
+        <section class="fieldsBtnsNextPrevious">
+            <button class="btnNextPrevious" title="Anterior" onclick="previous()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="btnNextPrevious" title="Próximo" onclick="next()">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </section>
+
+    </main>
+    <script src="Assets/js/script.js"></script>
+</body>
+</html>

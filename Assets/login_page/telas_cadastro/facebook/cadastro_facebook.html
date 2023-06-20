@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../img/book-bible-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../../css/reset_css.css">
+    <link rel="stylesheet" href="./assets/style_cadastro_facebook.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>facebook</h1>
+    </header>
+    <main>
+        <div>
+            <section class="icon">
+                <i class="fa-solid fa-book-bible"></i>
+                <span class="bkg_icon"></span>
+            </section>
+            <span class="info">Entre na sua conta do Facebook para se conectar ao Biblia Online</span>
+        </div>
+
+        <form>
+            <div class="fieldData">
+                <input class="inpData" type="email" name="email" id="email" placeholder="email" required>
+                <input class="inpData" type="password" id="password" placeholder="Senha do Facebook" required>
+            </div>
+            <section class="btn_interactive_with_fb">
+                <button id="entra" type="button" class="enter" onclick="enter()">Entrar</button>
+                <a href="https://pt-br.facebook.com/" target="_blank" class="link">Esqueceu a senha?</a>
+            </section>
+        </form>
+        
+        <button id="voltar" class="link voltar">Voltar</button>
+    </main>
+    
+    <script src="./assets/script_cadastro_facebook.js"></script>
+</body>
+</html>
