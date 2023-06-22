@@ -836,6 +836,7 @@ main.greatFontSize{
 
 small{
     font-size: calc(18px * .66);
+    margin-right: 10px;
 }
 
 #content p{
@@ -846,8 +847,8 @@ small{
 #toTop{
     border: none;
     background-color: #b9b9b9;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -898,8 +899,8 @@ small{
 .btnNextPrevious{
     all: unset;
     background-color: #b9b9b9;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     justify-content: center;

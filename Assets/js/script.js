@@ -1984,8 +1984,7 @@ function mostrarCap(indice, id){
     paragrafo.innerHTML = '';
     id_capitulo = id;
     for(let verso = 0; verso < biblia[numVersion][indice].capitulo[id].length; verso++){
-        paragrafo.innerHTML += `    <small>${verso+1}</small> ${biblia[numVersion][indice].capitulo[id][verso]}<br>`;
-        paragrafo.setAttribute('id', `verso ${verso + 1}`);
+        paragrafo.innerHTML += `    <small>${verso+1}</small> ${biblia[numVersion][indice].capitulo[id][verso]}<br class="brText">`;
         div_content.appendChild(paragrafo);
     }
     btn_escolha_cap.innerText = `${Number(id)+1}`;
