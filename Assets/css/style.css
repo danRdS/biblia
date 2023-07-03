@@ -863,6 +863,10 @@ small{
     opacity .5s, visibility .5s;
     cursor: pointer;
     z-index: 1000;
+    animation-name: regresso;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
 }
 
 #toTop i{
@@ -873,6 +877,10 @@ small{
 #toTop.showToTop{
     opacity: .4;
     visibility: visible;
+    animation-name: salto;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+    animation-direction: reverse;
 }
 #toTop:hover.showToTop{
     opacity: .6;
@@ -880,6 +888,17 @@ small{
 
 #toTop:active.showToTop{
     opacity: .4;
+}
+
+@keyframes salto {
+    to{transform: scale(0);}
+    from{transform:  scale(1);}
+}
+
+@keyframes regresso {
+    0%{transform:  scale(1);}
+    25%{transform: scale(1.2);}
+    100%{transform: scale(0);}
 }
 
 .fieldsBtnsNextPrevious{
