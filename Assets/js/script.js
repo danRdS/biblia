@@ -2,10 +2,12 @@ const menu_bar = document.querySelector('.menu_bar');
 const hamburguer = document.querySelector('.hamburguer');
 const dots = document.querySelector('.dots');
 const menu_container = document.getElementById('menu_container');
+const main_container = document.getElementById('main_container');
 const fieldsBtnsNextPrevious = document.querySelector('.fieldsBtnsNextPrevious');
 
 hamburguer.addEventListener('click', ()=>{
     hamburguer.classList.toggle('clicked');
+    main_container.classList.toggle('opened');
     menu_container.classList.toggle('open');
     fieldsBtnsNextPrevious.classList.toggle('hidden')
     if(hamburguer.classList.contains('clicked')){
