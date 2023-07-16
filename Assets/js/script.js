@@ -3,12 +3,14 @@ const hamburguer = document.querySelector('.hamburguer');
 const dots = document.querySelector('.dots');
 const menu_container = document.getElementById('menu_container');
 const main_container = document.getElementById('main_container');
+const aside = document.querySelector('.bkgMenuLateral');
 const fieldsBtnsNextPrevious = document.querySelector('.fieldsBtnsNextPrevious');
 
 hamburguer.addEventListener('click', ()=>{
     hamburguer.classList.toggle('clicked');
-    main_container.classList.toggle('opened');
+    aside.classList.toggle('visible');
     menu_container.classList.toggle('open');
+    main_container.classList.toggle('opened');
     fieldsBtnsNextPrevious.classList.toggle('hidden')
     if(hamburguer.classList.contains('clicked')){
         toTop.style.display = 'none';
@@ -18,7 +20,7 @@ hamburguer.addEventListener('click', ()=>{
 })
 
 document.addEventListener('click', (e)=>{
-    if(e.target === menu_container){
+    if(e.target === aside){
         hamburguer.click();
         toTop.style.display = 'flex';
     }

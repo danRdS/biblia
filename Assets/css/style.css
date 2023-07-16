@@ -111,12 +111,9 @@ header{
     background-color: #626262;
     width: 100%;
     height: 1000%;
-
     display: none;
     flex-direction: column;
     align-items: flex-start;
-
-
     position: absolute;
     top: 0;
     left: 0;
@@ -180,22 +177,32 @@ header{
     transition: all .3s ease-in-out;
 }
 
-
-
 #menu_container{
-    background-color: rgba(0, 0, 0, .7);
     position: fixed;
     top: 0;
-    /* left: -100%; */
     width: 100%;
     height: 100%;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility .1s ease-in-out, opacity .3s ease-in-out;
+    visibility: hidden;    
+    transition: all .3s ease-in-out;
 }
 
 #menu_container.open{
+    visibility: visible;
+}
+
+.bkgMenuLateral{
+    background-color: rgba(0, 0, 0, .7);
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.bkgMenuLateral.visible{
     visibility: visible;
     opacity: 1;
 }
@@ -203,7 +210,7 @@ header{
 #main_container{
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -40%;
     background-color: #626262;
     width: 40%;
     height: 100%;
@@ -337,7 +344,6 @@ header{
 
 .menu_lateral{
     width: 100%;
-
     display: flex;
     flex-direction: column;
 }
@@ -419,10 +425,10 @@ header{
     bottom: 44px;
 }
 
-
 #popup_areaLogoutMenu{
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .7);
@@ -544,8 +550,6 @@ header{
     visibility: visible;
     opacity: 1;
 }
-
-
 
 .menuDots .linkDots{
     color: #141414;
@@ -961,6 +965,7 @@ small{
     }
     #main_container{
         width: 70%;
+        left: -73%;
     }
     .nav_login{
         background-size: cover;
@@ -971,6 +976,9 @@ small{
 }
 
 @media screen and (max-width: 420px) {
+    .hamburguer.clicked{
+        left: 74%;
+    }
     #main_container{
         overflow: auto;
     }
