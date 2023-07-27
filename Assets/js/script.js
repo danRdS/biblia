@@ -21,7 +21,11 @@ hamburguer.addEventListener('click', ()=>{
 
 document.addEventListener('click', (e)=>{
     if(e.target === aside){
-        hamburguer.click();
+        hamburguer.classList.remove('clicked');
+        aside.classList.remove('visible');
+        menu_container.classList.remove('open');
+        main_container.classList.remove('opened');
+        fieldsBtnsNextPrevious.classList.remove('hidden')
         toTop.style.display = 'flex';
     }
 })
@@ -1962,6 +1966,7 @@ function caps(){
     menu_capitulos.innerHTML = '';
     paragrafo.innerHTML = '';
     gerarBtnCaps(indice);
+    topFuntion();
 }
 
 let id_capitulo = 0;

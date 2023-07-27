@@ -404,6 +404,7 @@ header{
 }
 
 .option_menu_lateral h4{
+    cursor: default;
     font-size: 1.4rem;
     margin-left: -1.2rem;
     text-transform: none;
