@@ -2190,6 +2190,7 @@ const saveTheme = () => {
         enableWhiteTheme();
     }
     popupBkgColor.classList.add('closed');
+    popupBkgColor.classList.remove('opened');
     toTop.removeAttribute('disabled');
     ableNextPrevious();
 }
@@ -2201,6 +2202,7 @@ const dontSaveTheme = () => {
         input.checked = true;        
     }
     popupBkgColor.classList.add('closed');
+    popupBkgColor.classList.remove('opened');
     toTop.removeAttribute('disabled');
     ableNextPrevious();
 }
@@ -2217,6 +2219,7 @@ confirmTheme.addEventListener('click', () => {
     spanRangeBefore = rangeFontSize.value;
     localStorage.fontSize = spanRangeBefore;
     popupAreaConfig.classList.add('closed');
+    popupAreaConfig.classList.remove('opened');
     changeNumSmall();
 
     localStorage.fontSize > 50 ? main_p.classList.add('greatFontSize') : main_p.classList.remove('greatFontSize');
@@ -2233,6 +2236,7 @@ if(localStorage.getItem('fontSize')){
 
 cancelTheme.addEventListener('click', () => {
     popupAreaConfig.classList.add('closed');
+    popupAreaConfig.classList.remove('opened');
     setTimeout(() => {
         spanRange.textContent = spanRangeBefore;
         rangeFontSize.value = spanRangeBefore;
@@ -2259,8 +2263,10 @@ document.addEventListener('click', (e) => {
     for(let menu of containerPopup){
         if(e.target == menu.parentNode){
             popupAreaConfig.classList.add('closed');
+            popupAreaConfig.classList.remove('opened');
             cancelTheme.click();
             popupBkgColor.classList.add('closed');
+            popupBkgColor.classList.remove('opened');
             dontSaveTheme();
         }
     }

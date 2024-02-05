@@ -1,9 +1,16 @@
+body:has(
+    .bkgMenuLateral.visible, 
+    .popupAreaConfig.opened, 
+    .popupBkgColor.opened, 
+    .dots:focus) {
+    overflow: hidden;
+}
+
 header{
     background-color: #21212a;
     padding: 10px;
     width: 100%;
     box-shadow: 0 3px 5px #141414;
-
     position: sticky;
     top: 0;
 }
